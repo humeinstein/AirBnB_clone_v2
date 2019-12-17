@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """This is the console for AirBnB"""
 import cmd
+import shlex
 from models import storage
 from datetime import datetime
 from models.base_model import BaseModel
@@ -36,13 +37,29 @@ class HBNBCommand(cmd.Cmd):
         """Creates a new instance of BaseModel, saves it
         Exceptions:
             SyntaxError: when there is no args given
-            NameError: when there is no object taht has the name
+            NameError: when there is no object that has the name
         """
         try:
             if not line:
                 raise SyntaxError()
-            my_list = line.split(" ")
+            args = shlex.shlex(line, posix=True)
+            args.whitespace_split = True
+            my_list = []
+            tok = ''
+            while tok is not None:
+                tok = args.get_token()
+                if tok is not None:
+                    my_list.append(tok)
+
             obj = eval("{}()".format(my_list[0]))
+            for item in my_list[1:]:
+                key, _, value = item.partition('=')
+                if value.isdigit() is True:
+                    setattr(obj, key, int(value))
+                elif value.replace('.', '').isdigit() is True:
+                    setattr(obj, key, float(value))
+                else:
+                    setattr(obj, key, value.replace('_', ' '))
             obj.save()
             print("{}".format(obj.id))
         except SyntaxError:
