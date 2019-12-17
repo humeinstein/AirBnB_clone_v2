@@ -1,4 +1,4 @@
---CREATE DATABASE - USER - PASSWORD - ASSIGN PRIVILEGES - FLUSH
+-- CREATE DATABASE - USER - PASSWORD - ASSIGN PRIVILEGES - FLUSH
 -- db = hbnb_dev_db
 -- new user hbnb_dev @ localhost
 -- hbnb_dev password = hbnb_dev_pwd
