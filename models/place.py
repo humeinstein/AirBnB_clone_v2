@@ -1,7 +1,10 @@
 #!/usr/bin/python3
 """This is the place class"""
 from models.base_model import BaseModel, Base
-
+import os
+import models
+from sqlalchemy.orm import relationship
+from sqlalchemy import Column, Integer, String
 
 class Place(BaseModel, Base):
     """This is the class for Place
