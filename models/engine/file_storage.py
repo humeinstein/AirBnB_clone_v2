@@ -64,6 +64,7 @@ class FileStorage:
                     self.__objects[key] = value
         except FileNotFoundError:
             pass
+
     def delete(self, obj=None):
         """ Delete obj if exists in private class 
         obj = an instance of particular class
