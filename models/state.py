@@ -17,9 +17,10 @@ class State(BaseModel, Base):
     cities = relationship("City", backref="state")
 
     @property
-    city_list = []
-    c_dict = storage.all(City)
-    for c in c_dict.values():
-        if self.id == c.state_id:
-            city_list.append(c)
-    return city_list
+    def cities(self):
+        city_list = []
+        c_dict = storage.all(City)
+        for c in c_dict.values():
+            if self.id == c.state_id:
+                city_list.append(c)
+        return city_list
