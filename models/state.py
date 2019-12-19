@@ -23,6 +23,7 @@ class State(BaseModel, Base):
 
         @property
         def cities(self):
+            """for filestorage to match state_id with state.id"""
             city_list = []
             c_dict = storage.all(City)
             for c in c_dict.values():

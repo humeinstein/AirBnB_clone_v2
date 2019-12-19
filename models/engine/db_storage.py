@@ -48,26 +48,6 @@ class DBStorage:
     def all(self, cls=None):
         """returns a new dictionary like filestorage"""
 
-#        new_dict = {}
-#        query = []
-#        if cls:
-#            objs = self.__session.query(cls.__name__).all()
-#            for obj in objs:
-#                key = obj.__class__.__name__ + '.' + obj.id
-#                new_dict[key] = obj
-#            return (new_dict)
-#        else:
-#            state = self.__session.query(State).all()
-#            if query != []:
-#                query.append(state)
-#            city = self.__session.query(City).all()
-#            if city != []:
-#                query.append(city)
-#            for q in query:
-#                key = q.__class__.__name__ + '.' + q.id
-#                new_dict[key] = q
-#            return (new_dict)
-
         ret_dict = {}
 
         for item in self.classes.keys():
