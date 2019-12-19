@@ -25,16 +25,14 @@ class FileStorage:
         Return:
             returns a dictionary of __object
         """
-        classdict = {}
-
-
-        if cls is None:
-            return self.__objects
+        if cls is not None:
+            newDict = {}
+            for k, v in self.__objects.items():
+                if cls == v.__class__:
+                    newDict[k] = v
+            return newDict
         else:
-            for key, value in self.__objects.items():
-                if value.__class__ == cls:
-                    classdict[key] = value
-            return classdict
+            return self.__objects
 
     def new(self, obj):
         """sets __object to given obj
@@ -66,7 +64,7 @@ class FileStorage:
             pass
 
     def delete(self, obj=None):
-        """ Delete obj if exists in private class 
+        """ Delete obj if exists in private class
         obj = an instance of particular class
         """
         if obj is not None:
