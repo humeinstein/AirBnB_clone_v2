@@ -3,7 +3,7 @@
 from models.base_model import BaseModel, Base
 import os
 from sqlalchemy import Column, String, Integer, ForeignKey, Float
-
+from sqlalchemy.orm import relationship
 
 class Place(BaseModel, Base):
     """This is the class for Place
@@ -34,6 +34,7 @@ class Place(BaseModel, Base):
         latitude = Column(Float, nullable=True)
         longitude = Column(Float, nullable=True)
         amenity_ids = []
+        reviews = relationship("Review", backref="place")
     else:
         city_id = ""
         user_id = ""
@@ -46,3 +47,13 @@ class Place(BaseModel, Base):
         latitude = 0.0
         longitude = 0.0
         amenity_ids = []
+
+        @property
+        def reviews(self):
+            """getter attribute reviews that returns the list of Review"""
+            rev_list = []
+            r_dict = storage.all(Review)
+            for r in r_dict.values():
+                if self.id == r.place_id:
+                    rev_list.append(r)
+            return rev_list
