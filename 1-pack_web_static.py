@@ -1,8 +1,8 @@
 #!/usr/bin/python3
-# fabric script that generates .tgz archive from the contents of webstatic folder of airbnb clone repo
+# fabric script that generates .tgz archive
 
 
-from fabric.api import local
+from fabric.operations import *
 from datetime import datetime
 
 
@@ -14,4 +14,4 @@ def do_pack():
         filepack = ("versions/web_static_().tgz").format(datetimes)
         local("tar -cvsf {} web_static".format(filepack))
     except Exception:
-        return (file)
+        return file
