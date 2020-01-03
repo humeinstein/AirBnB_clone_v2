@@ -1,7 +1,5 @@
 #!/usr/bin/python3
 # fabric script that generates .tgz archive
-
-
 from fabric.operations import *
 from datetime import datetime
 
@@ -10,9 +8,8 @@ def do_pack():
     """file packer"""
     try:
         local("mkdir -p versions")
-        datetimes = datetime.now().strftime("%Y%m%d%H%M%S")
-        filepack = ("versions/web_static_().tgz").format(datetimes)
-        local("tar -cvsf {} web_static".format(filepack))
-        return filepack
+        time = dateime.now().strftime("%Y%m%d%H%M%S")
+        local("tar -cvsf versions/web_static_{}.tgz".format(time))
+        return "versions/web_static_{}.tgz".format(time)
     except Exception:
         return None
