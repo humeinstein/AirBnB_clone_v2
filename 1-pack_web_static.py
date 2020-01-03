@@ -6,10 +6,11 @@ from datetime import datetime
 
 def do_pack():
     """create tgz archive"""
+    time = strftime("%Y%m%d%H%M%S")
     try:
         local("sudo mkdir -p versions")
-        time = dateime.now().strftime("%Y%m%d%H%M%S")
-        local("sudo tar -cvzf versions/web_static_{}.tgz web_static/".format(time))
-        return "versions/web_static_{}.tgz".format(time)
+        local("sudo tar -cvzf versions/web_static_{}.tgz web_static/".
+              format(time))
     except Exception:
         return None
+    return ("versions/web_static_().tgz".format(temp))
