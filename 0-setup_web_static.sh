@@ -1,5 +1,5 @@
 #!/usr/bin/env bash     
-# setup nginx && create index.html &&
+# saetup nginx && create index.html &&
 sudo apt-get update
 sudo apt-get -y install nginx
 mkdir -p /data/web_static/shared/
