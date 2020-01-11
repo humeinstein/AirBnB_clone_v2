@@ -1,4 +1,4 @@
-#!/usr/bin/python3                                                                        
+#!/usr/bin/python3                  
 """fabric script that generates .tgz archive"""
 from fabric.operations import local, env, put, run
 from datetime import datetime
@@ -18,9 +18,10 @@ def do_pack():
         return None
     return ("versions/web_static_().tgz".format(time))
 
+
 def do_deploy(archive_path):
     """ distribute tgz archive """
-    if (os.path.exists(arhive_path)):
+    if (os.path.exists(archive_path)):
         try:
             path = archive_path.split('/')[1]
             no_ext = path.split('.')[0]
