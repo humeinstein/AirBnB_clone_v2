@@ -16,11 +16,11 @@ def do_pack():
               format(time))
     except Exception:
         return None
-    return ("versions/web_static_().tgz".format(temp))
+    return ("versions/web_static_().tgz".format(time))
 
 def do_deploy(archive_path):
     """ distribute tgz archive """
-    if (path.exists(arhive_path)):
+    if (os.path.exists(arhive_path)):
         try:
             path = archive_path.split('/')[1]
             no_ext = path.split('.')[0]
