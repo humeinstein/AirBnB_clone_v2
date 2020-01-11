@@ -13,4 +13,4 @@ def do_pack():
               format(time))
     except Exception:
         return None
-    return ("versions/web_static_().tgz".format(temp))
+    return ("versions/web_static_().tgz".format(time))
