@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/python3                                                              
 """ simple flask app """
 from flask import Flask as fapp
 
@@ -33,11 +33,18 @@ def displayPython(text="is cool"):
     else:
         return("Python {}".format(text.replace("_", " ")))
 
-@app.route('/number_template/<int:n>')
-def displayHtml(n):
-    """ display html if n is # """
-    return render_template('5-nummber.html', number=n)
+@app.route('/number/<int:n>')
+def displayNumber(n):
+    """ displays number if unsigned int """
+    return("{} is a number".format(n))
 
+@app.route('/number_template/<n>')
+def template(n):
+    """ return if unsigned int """
+    if n.isnumeric():
+        return render_template('5-number.html', number=n)
+    else:
+        abort(404)
 
 if __name__ == "__main__":
     app.run()
