@@ -56,9 +56,9 @@ def number_odd_or_even_template(n):
     try:
         n = int(n)
         if n % 2 == 0:
-            st = "even"
+            s = "even"
         else:
-            st = "odd"
+            s = "odd"
         return render_template('6-number_odd_or_even.html', n=n, s=s)
     except:
         abort(404)
