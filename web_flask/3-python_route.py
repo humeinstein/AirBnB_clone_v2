@@ -19,9 +19,10 @@ def hbnb():
 
 
 @app.route("/c/<text>")
-def c_dir(text):
+def c_place(content):
     """ return C and string """
-    return ("C {}".format(text.replace('_', ' ')))
+    return ("C {}".format(content.replace('_', ' ')))
+
 
 if __name__ == "__main__":
     app.run()
