@@ -1,10 +1,10 @@
 #!/usr/bin/python3
 """ simple flask app """
 from flask import Flask as fapp
-app.url_map.strict_slashes = False
+
 
 app = fapp(__name__)
-
+app.url_map.strict_slashes = False
 
 @app.route("/")
 def sayHi():
