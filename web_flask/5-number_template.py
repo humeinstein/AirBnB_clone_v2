@@ -36,13 +36,16 @@ def displayPython(text="is cool"):
 @app.route('/number/<int:n>')
 def displayNumber(n):
     """ displays number if unsigned int """
-    return("{} is a number".format(n))
+    if n.isnumeric():
+        return("{} is a number".format(n))
+    else:
+        abort(404)
 
 @app.route('/number_template/<n>')
 def template(n):
     """ return if unsigned int """
     if n.isnumeric():
-        return render_template('5-number.html', number=n)
+        return render_template('5-number.html', n=n)
     else:
         abort(404)
 
