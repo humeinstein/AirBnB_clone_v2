@@ -3,7 +3,7 @@
 import os
 import json
 from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
+from sqlalchemy.orm import sessionmaker, scoped_session
 import models
 from models.base_model import BaseModel, Base
 from models.city import City
@@ -79,4 +79,8 @@ class DBStorage:
         Base.metadata.create_all(self.__engine)
         Session = sessionmaker()
         Session.configure(bind=self.__engine, expire_on_commit=False)
-        self.__session = Session()
+        DBStorage.__session = scoped_session(Session)
+    
+    def close(self):
+        """ release connection owned by session """
+        self.__session.remove()
